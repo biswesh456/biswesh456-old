@@ -1,36 +1,31 @@
-# GLAS - JEKYLL Theme/Blog
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-#FOR MOE INFOS, CHECK OUT THE   - organisers.yml file 
-# Site settings
-title: Glas 
-#What is the name of the events or talks you would like to host? (Example Brownbags, Talks, Lighting Talks)
-event_label: Events
-
-description: > # "
-  your description.....
-
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://spaceg.github.io" # the base hostname & protocol for your site
-
-#These settings might be able to go?
-author: Lucas Gatsas @ spacedig.ch 
-twitter_username: yourtwitter
-github_username:  yourgithub
-company_name: yourname
-
-# Build settings
+# top level stuff you probably don't need to touch
+highlighter: rouge
 markdown: kramdown
+rdiscount:
+  extensions: [smart]
+permalink: /:title.html
+paginate: 5
+plugins: [jekyll-paginate]
+port: 3000
+safe: true
 
-#Have to show future posts for future events.
-future: true
 
-permalink: /event/:title.html
+# edit here to achieve your personal greatness
+url: http://username.github.io/
+baseurl: /sustain/
+title: Chris Turner
+author: Chris Turner
+description: Personal blog and resume
+avatar: profile.png
+email: yourname@email.com
+github: jekyller/sustain # username
+twitter: username
+linkedin: username
+stackoverflow: username   #e.g: users/2735833/proton1h1
+#Comment out if you don't want disqus
+disqus: username
+google_analytics: UA-69391421-1
 
-#change your port on localhost
-port: 8000
 
-
+# needed for travis-ci build
+exclude: [vendor]
