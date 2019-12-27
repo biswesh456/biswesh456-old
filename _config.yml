@@ -11,15 +11,15 @@ safe: true
 
 
 # edit here to achieve your personal greatness
-url: http://username.github.io/
-baseurl: /sustain/
-title: Chris Turner
-author: Chris Turner
+url: http://biswesh456.github.io/
+baseurl: /
+title: Biswesh Mohapatra
+author: Biswesh Mohapatra
 description: Personal blog and resume
 avatar: profile.png
-email: yourname@email.com
+email: biswesh123@gmail.com
 github: jekyller/sustain # username
-twitter: username
+twitter: bis1602
 linkedin: username
 stackoverflow: username   #e.g: users/2735833/proton1h1
 #Comment out if you don't want disqus
