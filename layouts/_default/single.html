@@ -1,6 +1,13 @@
-{{ partial "header" .}}
+{{ define "header" }}
+    {{ partial "page-single/variables-init.html" . }}
+    {{ partial "header.html" . }}
+{{ end }}
 
-<h1>{{ .Title | markdownify }}</h1>
-{{ .Content | markdownify }}
+{{ define "content" }}
+    {{ partial "page-single/content.html" . }}
+{{ end }}
 
-{{ partial "footer" .}}
+{{ define "footer" }}
+    {{ partial "page-single/footer.html" . }}
+    {{ partial "page-single/variables-deinit.html" . }}
+{{ end }}

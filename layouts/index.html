@@ -1,16 +1,44 @@
-{{ partial "header" .}}
+{{ define "header" }}
+  {{ partial "header.html" . }}
+{{ end }}
 
-<h1>{{ .Title | markdownify }}</h1>
-{{ .Content }}
+{{ define "content" }}
+  <div class="post-list">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+    {{ range $paginator.Pages }}
+      {{ if .Draft }}
+        {{ .Scratch.Set "draftPage" true }}
+      {{ else }}
+        {{ .Scratch.Set "draftPage" false }}
+      {{ end }}
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="{{ .RelPermalink }}" {{if .Scratch.Get "draftPage" }}class="draft"{{end}}>{{ .Title }}</a>
+        </span>
+        <span class="item__date">
+          {{ .Date.Format (.Site.Params.dateformat | default "Jan 02, 2006") }}
+        </span>
+        <span {{if .Scratch.Get "draftPage" }}class="draft"{{end}}>
+        {{ if .Description }}
+        {{ .Description }}
+        {{ else }}
+        {{ .Summary }}
+        {{ end }}
+        </span>
+        {{ if .Truncated }}
+          ... <a class="read-more-symbol" href="{{ .RelPermalink }}">➦</a>
+        {{ end }}
+        </div>
+        {{ .Scratch.Delete "draftPage" }}
+     {{ end }}
+  </div>
+  {{ partial "pagination.html" . }}
+{{ end }}
 
-<h2>My Latest Job</h2>
-  {{ $pages := where site.RegularPages "Type" "in" .Site.Params.mainSections }}
-  {{ range first 1 $pages }}
-    {{ if in .Site.Params.mainSections "portfolio" }}
-      {{ partial "portfolio/item" .}}
-    {{ else if in .Site.Params.mainSections "post" }}
-      {{ partial "post/item" .}}
-    {{ end }}
+{{ define "footer" }}
+  {{ if .Site.GoogleAnalytics }}
+    <!-- Google Analytics -->
+    {{ template "_internal/google_analytics_async.html" . }}
   {{ end }}
-
-{{ partial "footer" .}}
+  {{ partial "footer/font-awesome-js.html" . }}
+{{ end }}

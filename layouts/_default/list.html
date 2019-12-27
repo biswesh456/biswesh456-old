@@ -1,11 +1,11 @@
-{{ partial "header" .}}
+{{ define "header" }}
+    {{ partial "header.html" . }}
+{{ end }}
 
-  <h1 id="title"> {{ .Title }}</h1>
-  <p>{{ .Content }}</p>
-  <ul id="list">
-    {{ range .Pages }}
-      {{ .Render "li" }}
-    {{ end }}
-  </ul>
+{{ define "content" }}
+    {{ partial "page-list/content.html" . }}
+{{ end }}
 
-{{ partial "footer" .}}
+{{ define "footer" }}
+    {{ partial "page-list/footer.html" . }}
+{{ end }}
